@@ -147,7 +147,7 @@ tahoservis/
 
 ---
 
-## Note
+## ❗ Note
 If you want to test app you can register as a client and then login. To login as servicer you shoud enter email: serviser@tahoservis.com and password: password123 and to login as admin you should enter email: admin@tahoservis.com and password123.
 
 ## 👤 Author
