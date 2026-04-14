@@ -18,6 +18,8 @@
 /public/storage
 /storage/*.key
 /bootstrap/cache/*.php
+.claude/
+.env.railway
 /storage/pail
 /vendor
 Homestead.json
