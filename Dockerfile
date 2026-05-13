@@ -24,4 +24,4 @@ RUN chmod -R 775 storage bootstrap/cache
 
 EXPOSE 8000
 
-CMD php artisan migrate --force && php artisan storage:link && php artisan optimize && php -S 0.0.0.0:8000 -t public
+CMD php artisan migrate --force && php artisan db:seed --force && php artisan storage:link && php artisan optimize && php -S 0.0.0.0:8000 -t public

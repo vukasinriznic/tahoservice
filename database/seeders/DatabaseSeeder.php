@@ -16,6 +16,10 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        if (User::count() > 0) {
+            return;
+        }
+
         // Korisnici
         $klijent1 = User::create([
             'name'     => 'Jovan',
