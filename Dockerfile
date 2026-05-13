@@ -13,6 +13,8 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 WORKDIR /app
 COPY . .
 
+RUN mkdir -p bootstrap/cache storage/framework/sessions storage/framework/views storage/framework/cache storage/framework/testing storage/logs
+
 RUN composer install --no-dev --optimize-autoloader
 RUN npm ci && npm run build
 
