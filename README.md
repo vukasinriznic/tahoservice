@@ -4,7 +4,7 @@ A full-stack web application for managing tachograph servicing workflows, built 
 
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Blade](https://img.shields.io/badge/Blade-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 
 ---
@@ -41,11 +41,12 @@ TahoServis is a role-based web platform that streamlines the entire tachograph s
 
 | Layer | Technology |
 |---|---|
-| Backend | PHP 8.x, Laravel 10 |
+| Backend | PHP 8.3, Laravel 12 |
 | Authentication | Laravel Breeze |
-| Database | MySQL (via XAMPP / phpMyAdmin) |
+| Database | PostgreSQL |
 | Frontend | Blade Templates, HTML, CSS |
 | PDF Generation | Laravel PDF (DomPDF) |
+| Deployment | Docker, Render.com |
 | Dev Environment | XAMPP, Visual Studio Code |
 
 ---
@@ -147,7 +148,7 @@ tahoservis/
 
 ## 🔗 Live Site
 
-👉 [View Live Site](https://tahoservice-production.up.railway.app)
+👉 [View Live Site](https://tahoservice.onrender.com)
 
 ---
 
