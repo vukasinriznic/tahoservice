@@ -16,91 +16,74 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        if (User::count() > 0) {
-            return;
-        }
-
         // Korisnici
-        $klijent1 = User::create([
+        $klijent1 = User::updateOrCreate(['email' => 'klijent@tahoservis.com'], [
             'name'     => 'Jovan',
             'surname'  => 'Petrović',
-            'email'    => 'klijent@tahoservis.com',
             'password' => Hash::make('password123'),
             'phone'    => '+381 60 111 2233',
             'role'     => 'klijent',
         ]);
 
-        $klijent2 = User::create([
+        $klijent2 = User::updateOrCreate(['email' => 'ana@tahoservis.com'], [
             'name'     => 'Ana',
             'surname'  => 'Ković',
-            'email'    => 'ana@tahoservis.com',
             'password' => Hash::make('password123'),
             'phone'    => '+381 60 222 3344',
             'role'     => 'klijent',
         ]);
 
-        $serviser = User::create([
+        $serviser = User::updateOrCreate(['email' => 'serviser@tahoservis.com'], [
             'name'     => 'Marko',
             'surname'  => 'Nikolić',
-            'email'    => 'serviser@tahoservis.com',
             'password' => Hash::make('password123'),
             'phone'    => '+381 60 333 4455',
             'role'     => 'serviser',
         ]);
 
-        $serviser = User::create([
+        User::updateOrCreate(['email' => 'dimi@gmail.com'], [
             'name'     => 'Dimitrije',
             'surname'  => 'Riznic',
-            'email'    => 'dimi@gmail.com',
             'password' => Hash::make('password123'),
             'phone'    => '+381 233 5592',
             'role'     => 'serviser',
         ]);
 
-        User::create([
+        User::updateOrCreate(['email' => 'admin@tahoservis.com'], [
             'name'     => 'Admin',
             'surname'  => 'Tahoshop',
-            'email'    => 'admin@tahoservis.com',
             'password' => Hash::make('password123'),
             'phone'    => '+381 60 999 8877',
             'role'     => 'administrator',
         ]);
 
         // Vozila
-        $vozilo1 = Vehicle::create([
-            'user_id'      => $klijent1->id,
-            'registration' => 'BG-123-AB',
-            'brand'        => 'Volkswagen',
-            'model'        => 'Transporter',
+        $vozilo1 = Vehicle::firstOrCreate(['registration' => 'BG-123-AB'], [
+            'user_id' => $klijent1->id, 'brand' => 'Volkswagen', 'model' => 'Transporter',
         ]);
 
-        $vozilo2 = Vehicle::create([
-            'user_id'      => $klijent1->id,
-            'registration' => 'NS-456-CD',
-            'brand'        => 'Mercedes',
-            'model'        => 'Sprinter',
+        $vozilo2 = Vehicle::firstOrCreate(['registration' => 'NS-456-CD'], [
+            'user_id' => $klijent1->id, 'brand' => 'Mercedes', 'model' => 'Sprinter',
         ]);
 
-        $vozilo3 = Vehicle::create([
-            'user_id'      => $klijent2->id,
-            'registration' => 'BG-789-EF',
-            'brand'        => 'Ford',
-            'model'        => 'Transit',
+        $vozilo3 = Vehicle::firstOrCreate(['registration' => 'BG-789-EF'], [
+            'user_id' => $klijent2->id, 'brand' => 'Ford', 'model' => 'Transit',
         ]);
 
-        $vozilo4 = Vehicle::create([
-            'user_id'      => $klijent2->id,
-            'registration' => 'KG-321-GH',
-            'brand'        => 'Iveco',
-            'model'        => 'Daily',
+        $vozilo4 = Vehicle::firstOrCreate(['registration' => 'KG-321-GH'], [
+            'user_id' => $klijent2->id, 'brand' => 'Iveco', 'model' => 'Daily',
         ]);
 
         // Delovi
-        $deo1 = Part::create(['name' => 'Senzor brzine',      'code' => 'SB-001', 'supplier' => 'VDO',        'quantity' => 8]);
-        $deo2 = Part::create(['name' => 'Plomba tahografa',   'code' => 'PT-002', 'supplier' => 'Siemens',    'quantity' => 25]);
-        $deo3 = Part::create(['name' => 'Konektor tahografa', 'code' => 'KT-003', 'supplier' => 'VDO',        'quantity' => 2]);
-        $deo4 = Part::create(['name' => 'Baterija tahografa', 'code' => 'BT-004', 'supplier' => 'Bosch',      'quantity' => 5]);
-        $deo5 = Part::create(['name' => 'Štampač tahografa',  'code' => 'ST-005', 'supplier' => 'Stoneridge', 'quantity' => 1]);
+        $deo1 = Part::firstOrCreate(['code' => 'SB-001'], ['name' => 'Senzor brzine',      'supplier' => 'VDO',        'quantity' => 8]);
+        $deo2 = Part::firstOrCreate(['code' => 'PT-002'], ['name' => 'Plomba tahografa',   'supplier' => 'Siemens',    'quantity' => 25]);
+        $deo3 = Part::firstOrCreate(['code' => 'KT-003'], ['name' => 'Konektor tahografa', 'supplier' => 'VDO',        'quantity' => 2]);
+        $deo4 = Part::firstOrCreate(['code' => 'BT-004'], ['name' => 'Baterija tahografa', 'supplier' => 'Bosch',      'quantity' => 5]);
+        $deo5 = Part::firstOrCreate(['code' => 'ST-005'], ['name' => 'Štampač tahografa',  'supplier' => 'Stoneridge', 'quantity' => 1]);
+
+        if (ServiceRequest::count() > 0) {
+            return;
+        }
 
         // STATUS: zakazano
         ServiceRequest::create([
