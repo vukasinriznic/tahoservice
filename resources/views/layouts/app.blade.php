@@ -139,13 +139,35 @@
             background: linear-gradient(90deg, #1A73E8, #4FC3F7);
         }
 
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .card-icon-blue  { background: #E8F0FE; color: #1A73E8; }
+        .card-icon-green { background: #E6F4EA; color: #1E8E3E; }
+        .card-icon-orange{ background: #FEF3E2; color: #E37400; }
+        .card-icon-red   { background: #FDECEA; color: #D93025; }
+
         .card-label {
             font-size: 12px;
             font-weight: 700;
             color: #888;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .card-value {
@@ -265,6 +287,88 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .hamburger:hover { background: rgba(255,255,255,0.15); }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: #0D47A1;
+            padding: 12px 20px 16px;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mobile-menu a, .mobile-menu button {
+            display: block;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            text-align: left;
+            width: 100%;
+        }
+
+        .mobile-menu a:hover, .mobile-menu button:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .mobile-menu a.active {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .mobile-menu button { color: rgba(255,255,255,0.75); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .main { padding: 24px 20px; }
+
+            .cards-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+
+            .page-title { font-size: 20px; margin-bottom: 20px; }
+
+            td { white-space: normal; }
+
+            .table-wrap { overflow-x: auto; }
+
+            table { min-width: 600px; }
+        }
+
+        @media (max-width: 480px) {
+            .cards-grid { grid-template-columns: 1fr; }
+        }
+
     </style>
 </head>
 <body>
@@ -278,7 +382,19 @@
             <button type="submit">Odjavi se</button>
         </form>
     </div>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+    @yield('nav-links')
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit">Odjavi se</button>
+    </form>
+</div>
 
 <div class="main">
     @yield('content')
@@ -350,6 +466,12 @@
 </body>
 
 <script>
+    function toggleMenu() {
+        var menu = document.getElementById('mobileMenu');
+        var open = menu.style.display === 'flex';
+        menu.style.display = open ? 'none' : 'flex';
+    }
+
     setTimeout(function() {
         ['flash-success', 'flash-error', 'flash-warning'].forEach(function(id) {
             var el = document.getElementById(id);
