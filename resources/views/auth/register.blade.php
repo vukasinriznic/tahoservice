@@ -14,55 +14,130 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F0F4FF;
             min-height: 100vh;
             display: flex;
+        }
+
+        /* LEFT PANEL */
+        .left {
+            width: 44%;
+            background: linear-gradient(145deg, #1A73E8 0%, #0D47A1 60%, #082d6e 100%);
+            display: flex;
             flex-direction: column;
-        }
-
-        nav {
-            background: linear-gradient(135deg, #1A73E8 0%, #0D47A1 100%);
-            padding: 0 36px;
-            display: flex;
-            align-items: center;
-            height: 64px;
-            box-shadow: 0 4px 20px rgba(26,115,232,0.3);
-        }
-
-        .nav-brand {
-            font-size: 22px;
-            font-weight: 800;
-            color: #FFFFFF;
-            letter-spacing: 2px;
-        }
-
-        .nav-brand span { color: #FFD700; }
-
-        .wrapper {
-            flex: 1;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 40px 20px;
-        }
-
-        .card {
-            background: #FFFFFF;
-            border-radius: 16px;
-            padding: 44px 40px;
-            width: 100%;
-            max-width: 480px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 60px 52px;
             position: relative;
             overflow: hidden;
         }
 
-        .card::before {
+        .left::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #1A73E8, #4FC3F7);
+            top: -100px; right: -100px;
+            width: 400px; height: 400px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .left::after {
+            content: '';
+            position: absolute;
+            bottom: -120px; left: -60px;
+            width: 350px; height: 350px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+
+        .left-content { position: relative; z-index: 1; }
+
+        .brand {
+            font-size: 26px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 48px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .brand span { color: #FFD700; }
+
+        .left h2 {
+            font-size: 34px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            letter-spacing: -0.8px;
+            margin-bottom: 16px;
+        }
+
+        .left h2 span { color: #FFD700; }
+
+        .left p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            margin-bottom: 44px;
+            max-width: 340px;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            color: #FFD700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .step-text strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .step-text span {
+            font-size: 13px;
+            color: rgba(255,255,255,0.65);
+        }
+
+        /* RIGHT PANEL */
+        .right {
+            width: 56%;
+            background: #F0F4FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 32px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
         }
 
         .card-title {
@@ -73,13 +148,11 @@
             letter-spacing: -0.5px;
         }
 
-        .card-title span { color: #1A73E8; }
-
         .card-sub {
-            font-size: 13px;
+            font-size: 14px;
             color: #888;
             font-weight: 500;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
         .row {
@@ -101,19 +174,20 @@
         input {
             width: 100%;
             padding: 11px 14px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 10px;
             font-size: 14px;
             font-family: 'Inter', sans-serif;
             background: #FAFAFA;
             color: #333;
             outline: none;
-            transition: border-color 0.2s, background 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
         }
 
         input:focus {
             border-color: #1A73E8;
-            background: #FFFFFF;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(26,115,232,0.1);
         }
 
         .role-badge {
@@ -122,7 +196,7 @@
             gap: 6px;
             background: #E8F0FE;
             color: #1A73E8;
-            border: 1px solid #c5d8fb;
+            border: 1.5px solid #c5d8fb;
             border-radius: 8px;
             padding: 8px 14px;
             font-size: 13px;
@@ -132,31 +206,31 @@
 
         .btn {
             width: 100%;
-            padding: 12px;
+            padding: 13px;
             background: linear-gradient(135deg, #1A73E8 0%, #0D47A1 100%);
-            color: #FFFFFF;
+            color: #fff;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 15px;
             font-weight: 700;
             font-family: 'Inter', sans-serif;
             cursor: pointer;
             margin-top: 8px;
             transition: all 0.2s;
-            box-shadow: 0 2px 8px rgba(26,115,232,0.3);
+            box-shadow: 0 4px 16px rgba(26,115,232,0.35);
         }
 
         .btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(26,115,232,0.4);
+            box-shadow: 0 6px 24px rgba(26,115,232,0.45);
         }
 
         .error {
-            background: #FDECEA;
-            border: 1px solid #f5c6c6;
-            color: #D93025;
-            border-radius: 8px;
-            padding: 10px 14px;
+            background: #FEF2F2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            border-radius: 10px;
+            padding: 12px 16px;
             font-size: 13px;
             font-weight: 500;
             margin-bottom: 20px;
@@ -164,7 +238,7 @@
 
         .footer-link {
             text-align: center;
-            margin-top: 24px;
+            margin-top: 20px;
             font-size: 13px;
             color: #666;
             font-weight: 500;
@@ -177,14 +251,63 @@
         }
 
         .footer-link a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .left { display: none; }
+            .right { width: 100%; min-height: 100vh; }
+            .row { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
+    <!-- LEFT -->
+    <div class="left">
+        <div class="left-content">
+            <a href="/" class="brand">TAHO<span>SERVIS</span></a>
+
+            <h2>Kreirajte<br><span>besplatan</span> nalog</h2>
+            <p>Registrujte se za par minuta i odmah zakažite servis vašeg tahografa.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-text">
+                        <strong>Popunite podatke</strong>
+                        <span>Ime, email i lozinka</span>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-text">
+                        <strong>Dodajte vozilo</strong>
+                        <span>Registracija i tip tahografa</span>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-text">
+                        <strong>Zakažite servis</strong>
+                        <span>Izaberite termin koji vam odgovara</span>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-text">
+                        <strong>Pratite status</strong>
+                        <span>Obaveštenja u realnom vremenu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
         <div class="card">
             <div class="card-title">Kreirajte nalog</div>
-            <div class="card-sub">Registracija novog klijenta</div>
+            <div class="card-sub">Registracija novog klijenta — besplatno</div>
 
             @if ($errors->any())
                 <div class="error">
@@ -254,7 +377,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn">Registruj se</button>
+                <button type="submit" class="btn">Registruj se →</button>
             </form>
 
             <div class="footer-link">
@@ -262,5 +385,6 @@
             </div>
         </div>
     </div>
+
 </body>
 </html>
