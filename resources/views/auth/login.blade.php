@@ -99,7 +99,7 @@
         .card-title {
             font-size: 24px;
             font-weight: 800;
-            color: #1a1a2e;
+            color: #1A73E8;
             margin-bottom: 4px;
             letter-spacing: -0.5px;
         }
