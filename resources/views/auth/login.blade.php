@@ -25,90 +25,56 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             padding: 60px 56px;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
-        .left::before {
-            content: '';
+        .left-pattern {
             position: absolute;
-            top: -100px; right: -100px;
-            width: 400px; height: 400px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.18;
         }
 
-        .left::after {
-            content: '';
-            position: absolute;
-            bottom: -120px; left: -60px;
-            width: 350px; height: 350px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 50%;
+        .left-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        .left-content { position: relative; z-index: 1; }
 
         .brand {
-            font-size: 26px;
+            font-size: 32px;
             font-weight: 800;
             color: #fff;
-            letter-spacing: 2px;
-            margin-bottom: 48px;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
             text-decoration: none;
             display: inline-block;
         }
 
         .brand span { color: #FFD700; }
 
-        .left h2 {
-            font-size: 36px;
-            font-weight: 800;
-            color: #fff;
-            line-height: 1.15;
-            letter-spacing: -0.8px;
-            margin-bottom: 16px;
-        }
-
-        .left h2 span { color: #FFD700; }
-
-        .left p {
-            font-size: 16px;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.7;
-            margin-bottom: 48px;
-            max-width: 360px;
-        }
-
-        .features {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .feature-icon {
-            width: 36px;
-            height: 36px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            color: #FFD700;
-        }
-
-        .feature span {
-            font-size: 14px;
+        .left-tagline {
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
             font-weight: 500;
-            color: rgba(255,255,255,0.85);
+            letter-spacing: 0.5px;
+            max-width: 260px;
+            line-height: 1.6;
+        }
+
+        .left-divider {
+            width: 40px;
+            height: 3px;
+            background: #FFD700;
+            border-radius: 2px;
+            margin: 20px auto;
         }
 
         /* RIGHT PANEL */
@@ -253,32 +219,21 @@
 
     <!-- LEFT -->
     <div class="left">
+        <svg class="left-pattern" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <pattern id="hex" x="0" y="0" width="56" height="100" patternUnits="userSpaceOnUse">
+                    <polygon points="28,2 54,17 54,47 28,62 2,47 2,17" fill="none" stroke="white" stroke-width="1"/>
+                    <polygon points="28,52 54,67 54,97 28,112 2,97 2,67" fill="none" stroke="white" stroke-width="1"/>
+                    <polygon points="0,27 -26,42 -26,72 0,87 26,72 26,42" fill="none" stroke="white" stroke-width="1"/>
+                    <polygon points="56,27 30,42 30,72 56,87 82,72 82,42" fill="none" stroke="white" stroke-width="1"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hex)"/>
+        </svg>
         <div class="left-content">
             <a href="/" class="brand">TAHO<span>SERVIS</span></a>
-
-            <h2>Dobrodošli<br>nazad <span>👋</span></h2>
-            <p>Prijavite se i pratite status servisa vašeg tahografa u realnom vremenu.</p>
-
-            <div class="features">
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                    </div>
-                    <span>Praćenje statusa servisa u realnom vremenu</span>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    </div>
-                    <span>PDF sertifikat o plombiranju</span>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    </div>
-                    <span>Online zakazivanje termina</span>
-                </div>
-            </div>
+            <div class="left-divider"></div>
+            <div class="left-tagline">Profesionalni servis i kalibracija tahografa</div>
         </div>
     </div>
 

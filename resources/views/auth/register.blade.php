@@ -25,100 +25,56 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             padding: 60px 52px;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
-        .left::before {
-            content: '';
+        .left-pattern {
             position: absolute;
-            top: -100px; right: -100px;
-            width: 400px; height: 400px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.18;
         }
 
-        .left::after {
-            content: '';
-            position: absolute;
-            bottom: -120px; left: -60px;
-            width: 350px; height: 350px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 50%;
+        .left-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        .left-content { position: relative; z-index: 1; }
 
         .brand {
-            font-size: 26px;
+            font-size: 32px;
             font-weight: 800;
             color: #fff;
-            letter-spacing: 2px;
-            margin-bottom: 48px;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
             text-decoration: none;
             display: inline-block;
         }
 
         .brand span { color: #FFD700; }
 
-        .left h2 {
-            font-size: 34px;
-            font-weight: 800;
-            color: #fff;
-            line-height: 1.15;
-            letter-spacing: -0.8px;
-            margin-bottom: 16px;
-        }
-
-        .left h2 span { color: #FFD700; }
-
-        .left p {
+        .left-tagline {
             font-size: 15px;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.7;
-            margin-bottom: 44px;
-            max-width: 340px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            max-width: 240px;
+            line-height: 1.6;
         }
 
-        .steps {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .step {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-        }
-
-        .step-num {
-            width: 28px;
-            height: 28px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 800;
-            color: #FFD700;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        .step-text strong {
-            display: block;
-            font-size: 14px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 2px;
-        }
-
-        .step-text span {
-            font-size: 13px;
-            color: rgba(255,255,255,0.65);
+        .left-divider {
+            width: 40px;
+            height: 3px;
+            background: #FFD700;
+            border-radius: 2px;
+            margin: 20px auto;
         }
 
         /* RIGHT PANEL */
@@ -264,42 +220,21 @@
 
     <!-- LEFT -->
     <div class="left">
+        <svg class="left-pattern" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <pattern id="hex" x="0" y="0" width="56" height="100" patternUnits="userSpaceOnUse">
+                    <polygon points="28,2 54,17 54,47 28,62 2,47 2,17" fill="none" stroke="white" stroke-width="1"/>
+                    <polygon points="28,52 54,67 54,97 28,112 2,97 2,67" fill="none" stroke="white" stroke-width="1"/>
+                    <polygon points="0,27 -26,42 -26,72 0,87 26,72 26,42" fill="none" stroke="white" stroke-width="1"/>
+                    <polygon points="56,27 30,42 30,72 56,87 82,72 82,42" fill="none" stroke="white" stroke-width="1"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hex)"/>
+        </svg>
         <div class="left-content">
             <a href="/" class="brand">TAHO<span>SERVIS</span></a>
-
-            <h2>Kreirajte<br><span>besplatan</span> nalog</h2>
-            <p>Registrujte se za par minuta i odmah zakažite servis vašeg tahografa.</p>
-
-            <div class="steps">
-                <div class="step">
-                    <div class="step-num">1</div>
-                    <div class="step-text">
-                        <strong>Popunite podatke</strong>
-                        <span>Ime, email i lozinka</span>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">2</div>
-                    <div class="step-text">
-                        <strong>Dodajte vozilo</strong>
-                        <span>Registracija i tip tahografa</span>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">3</div>
-                    <div class="step-text">
-                        <strong>Zakažite servis</strong>
-                        <span>Izaberite termin koji vam odgovara</span>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">4</div>
-                    <div class="step-text">
-                        <strong>Pratite status</strong>
-                        <span>Obaveštenja u realnom vremenu</span>
-                    </div>
-                </div>
-            </div>
+            <div class="left-divider"></div>
+            <div class="left-tagline">Profesionalni servis i kalibracija tahografa</div>
         </div>
     </div>
 
