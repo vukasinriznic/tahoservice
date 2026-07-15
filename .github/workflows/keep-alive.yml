@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping TahoService
-        run: curl -sSf --retry 3 --retry-all-errors --max-time 120 https://tahoservice.onrender.com > /dev/null
+        run: curl -sSf --retry 3 --retry-all-errors --max-time 120 https://tahoservice.onrender.com/health > /dev/null

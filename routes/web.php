@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServiceRequestController;
 use App\Http\Controllers\DiagnosticController;
@@ -10,6 +11,17 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocaleController;
+
+// Meta za uptime monitor: dodiruje bazu da bi je drzao aktivnom, jer se
+// Supabase free projekat pauzira posle nedelju dana bez upita.
+Route::get('/health', function () {
+    try {
+        DB::select('select 1');
+        return response('ok', 200);
+    } catch (\Throwable $e) {
+        return response('db unavailable', 503);
+    }
+});
 
 Route::get('/', function () {
     if (auth()->check()) {

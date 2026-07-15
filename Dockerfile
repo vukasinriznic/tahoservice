@@ -24,4 +24,11 @@ RUN chmod -R 775 storage bootstrap/cache
 
 EXPOSE 8000
 
-CMD php artisan migrate --force && php artisan db:seed --force && php artisan storage:link && php artisan optimize && php -S 0.0.0.0:8000 -t public
+# Koraci pripreme ne smeju da obore start: ako baza nije dostupna, server
+# svejedno mora da se podigne i prikaze gresku umesto da Render ostane u
+# beskonacnoj "waking up" petlji jer port nikad nije otvoren.
+CMD timeout 90 php artisan migrate --force || true; \
+    timeout 90 php artisan db:seed --force || true; \
+    php artisan storage:link || true; \
+    php artisan optimize || true; \
+    php -S 0.0.0.0:8000 -t public
